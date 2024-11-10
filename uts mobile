@@ -1,0 +1,51 @@
+// Kelas Product untuk contoh atribut 'products' dalam User
+class Product {
+  String productName;
+  double price;
+
+  Product(this.productName, this.price);
+}
+
+// Kelas Biodata untuk menyimpan informasi pribadi pengguna
+class Biodata {
+  String name;
+  int age;
+
+  Biodata(this.name, this.age);
+
+  @override
+  String toString() {
+    return 'Name: $name, Age: $age';
+  }
+}
+
+// Kelas User dengan atribut name, age, dan products
+class User {
+  Biodata biodata;
+  List<Product> products;
+
+  User(String name, int age, this.products) : biodata = Biodata(name, age);
+
+  void printUserInfo() {
+    print('User Info: ${biodata}');
+    print('Products: ');
+    for (var product in products) {
+      print('- ${product.productName} (\$${product.price})');
+    }
+  }
+}
+
+void main() {
+  // Membuat beberapa produk
+  var product1 = Product('Laptop', 1500.00);
+  var product2 = Product('Smartphone', 800.00);
+
+  // Menambahkan produk ke dalam list
+  List<Product> productList = [product1, product2];
+
+  // Membuat objek User
+  var user = User('anisa', 20, productList);
+
+  // Menampilkan informasi pengguna dan produk
+  user.printUserInfo();
+}
